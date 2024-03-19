@@ -1,0 +1,24 @@
+#!groovy
+// Check ub1 properties
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("Connect with ssh") {
+            steps {
+                sh 'ssh root@95.216.214.131'
+            }
+        }
+        stage("deploy") {
+            steps {
+                sh 'ssh root@95.216.214.131'
+                sh 'docker run hello-world'
+            }
+        }
+    }
+}
