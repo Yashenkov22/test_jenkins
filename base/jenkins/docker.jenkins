@@ -18,11 +18,8 @@ pipeline {
         }
         stage("deploy") {
             steps {
-                sh 'ssh root@95.216.214.131'
-                sh 'hostname'
-                sh 'docker run hello-world'
-                sh 'uptime'
-                sh 'docker ps'
+                sh 'ssh root@95.216.214.131 docker run hello-world'
+                sh 'ssh root@95.216.214.131 docker ps'
             }
         }
     }
