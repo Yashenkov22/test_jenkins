@@ -1,5 +1,5 @@
 #!groovy
-// Check ub1 properties
+// Check properties
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -18,8 +18,10 @@ pipeline {
         }
         stage("deploy") {
             steps {
-                sh 'ssh root@95.216.214.131 docker run hello-world'
-                sh 'ssh root@95.216.214.131 docker ps'
+                sh 'ssh root@95.216.214.131 docker run --name hw hello-world'
+                sh 'ssh root@95.216.214.131 docker ps -a'
+                sh 'ssh root@95.216.214.131 docker rm hw'
+                sh 'ssh root@95.216.214.131 docker ps -a'
             }
         }
     }
