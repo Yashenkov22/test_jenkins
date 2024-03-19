@@ -12,6 +12,7 @@ pipeline {
         stage("Connect with ssh") {
             steps {
                 sh 'ssh root@95.216.214.131'
+                sh 'uptime'
             }
         }
         stage("deploy") {
