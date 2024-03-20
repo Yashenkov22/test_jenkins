@@ -1,11 +1,14 @@
 #!groovy
 // Check properties
+// Запретить одновременные сборки
 properties([disableConcurrentBuilds()])
 
 pipeline {
     agent any
     options {
+        // Хранить логи последних 10 сборок и 10 артефактов
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        // вывод времени в консоли
         timestamps()
     }
     stages {
@@ -18,11 +21,12 @@ pipeline {
         // }
         stage("deploy") {
             steps {
-                sh 'ssh root@95.216.214.131 docker run --name hw hello-world'
-                sh 'ssh root@95.216.214.131 docker ps -a'
-                sh 'ssh root@95.216.214.131 docker rm hw'
-                sh 'ssh root@95.216.214.131 docker ps -a'
-                sh 'ssh root@95.216.214.131 docker rollout --help'
+                sh 'ssh root@95.216.214.131 docker run --name hw hello-world &&\
+                    docker ps -a && docker rm hw && docker ps -a && docker rollout --help'
+                // sh 'ssh root@95.216.214.131 docker ps -a'
+                // sh 'ssh root@95.216.214.131 docker rm hw'
+                // sh 'ssh root@95.216.214.131 docker ps -a'
+                // sh 'ssh root@95.216.214.131 docker rollout --help'
             }
         }
     }
