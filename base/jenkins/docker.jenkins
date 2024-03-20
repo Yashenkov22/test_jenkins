@@ -1,5 +1,5 @@
 #!/bin/ksh
-export BUILD_ID=dontKillMe
+export JENKINS_NODE_COOKIE=dontKillMe
 // #!groovy
 // Check properties
 // Запретить одновременные сборки
