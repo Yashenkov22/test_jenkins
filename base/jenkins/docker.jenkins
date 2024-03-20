@@ -22,7 +22,7 @@ pipeline {
         stage("deploy") {
                 steps {
                     sh '''
-                        ssh root@95.216.214.131 'cd moneyswap_back/django_fastapi && docker-compose build'
+                        ssh root@95.216.214.131 'cd moneyswap_back/django_fastapi && git pull'
                     '''
 
 
