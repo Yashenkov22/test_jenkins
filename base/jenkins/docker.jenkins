@@ -21,11 +21,13 @@ pipeline {
         // }
         stage("deploy") {
             steps {
-                sh 'ssh root@95.216.214.131'
-                dir('moneyswap_back/django_fastapi'){
-                    sh 'ls'
-                }
-                sh 'ssh root@95.216.214.131 ls'
+                sh '''
+                    ssh root@95.216.214.131 ls
+                    cd moneyswap_back/django_fastapi
+                    ls
+                '''
+
+                // sh 'ssh root@95.216.214.131 ls'
                 // sh 'ssh root@95.216.214.131 docker ps -a'
                 // sh 'ssh root@95.216.214.131 docker rm hw'
                 // sh 'ssh root@95.216.214.131 docker ps -a'
