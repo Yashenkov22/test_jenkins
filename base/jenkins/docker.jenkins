@@ -22,9 +22,7 @@ pipeline {
         stage("deploy") {
             steps {
                 sh '''
-                    ssh root@95.216.214.131 ls
-                    cd moneyswap_back/django_fastapi
-                    ls
+                    ssh root@95.216.214.131 ls ./moneyswap_back/django_fastapi/
                 '''
 
                 // sh 'ssh root@95.216.214.131 ls'
