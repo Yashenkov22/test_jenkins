@@ -1,9 +1,9 @@
+#!/bin/ksh
+export BUILD_ID=dontKillMe
 #!groovy
 // Check properties
 // Запретить одновременные сборки
 properties([disableConcurrentBuilds()])
-
-BUILD_ID=dontKillMe
 
 pipeline {
     agent any
