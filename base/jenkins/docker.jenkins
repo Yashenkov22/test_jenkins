@@ -21,8 +21,7 @@ pipeline {
         // }
         stage("deploy") {
             steps {
-                sh 'ssh root@95.216.214.131 docker run --name hw hello-world &&\
-                    docker ps -a && docker rm hw && docker ps -a && docker rollout --help'
+                sh 'ssh root@95.216.214.131 cat moneyswap_back/django_fastapi/docker-compose.yml'
                 // sh 'ssh root@95.216.214.131 docker ps -a'
                 // sh 'ssh root@95.216.214.131 docker rm hw'
                 // sh 'ssh root@95.216.214.131 docker ps -a'
