@@ -3,6 +3,8 @@
 // Запретить одновременные сборки
 properties([disableConcurrentBuilds()])
 
+BUILD_ID=dontKillMe
+
 pipeline {
     agent any
     options {
