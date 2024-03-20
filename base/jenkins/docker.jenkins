@@ -9,19 +9,20 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("Connect with ssh") {
-            steps {
-                sh 'ssh root@95.216.214.131'
-                sh 'hostname'
-                sh 'uptime'
-            }
-        }
+        // stage("Connect with ssh") {
+        //     steps {
+        //         sh 'ssh root@95.216.214.131'
+        //         sh 'hostname'
+        //         sh 'uptime'
+        //     }
+        // }
         stage("deploy") {
             steps {
                 sh 'ssh root@95.216.214.131 docker run --name hw hello-world'
                 sh 'ssh root@95.216.214.131 docker ps -a'
                 sh 'ssh root@95.216.214.131 docker rm hw'
                 sh 'ssh root@95.216.214.131 docker ps -a'
+                sh 'ssh root@95.216.214.131 docker rollout'
             }
         }
     }
